@@ -186,6 +186,8 @@ ENGINE = InnoDB;
  ![Sincronização Diretório Local Azure](/img/pipelineAzure.JPG)
  
  ## Análise de dados
+ Foi gerado um resultado completo das queries salvos no formato csv que podem ser acessado [aqui](/resultadoanalisedados). No corpo do textos segue uma prévia dos resultado limitado até 10 linhas.
+ 
  1. Escreva uma query que retorna a quantidade de linhas na tabela Sales.SalesOrderDetail pelo campo SalesOrderID, desde que tenham pelo menos três linhas de detalhes.
  ```mysql
 SELECT COUNT(*) as Total FROM(
