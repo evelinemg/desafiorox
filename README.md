@@ -226,8 +226,9 @@ LIMIT 3;
  ```
  5. Escreva uma query mostrando os campos SalesOrderID, OrderDate e TotalDue da tabela Sales.SalesOrderHeader. Obtenha apenas as linhas onde a ordem tenha sido feita durante o mês de setembro/2011 e o total devido esteja acima de 1.000. Ordene pelo total devido decrescente.
  ```mysql
-  SELECT SalesOrderID, OrderDate, TotalDue
+ SELECT SalesOrderID, OrderDate, TotalDue
  FROM SalesOrderHeader
  WHERE OrderDate BETWEEN '2011/09/01' AND '2011/09/30'
  AND TotalDue>1000
+ ORDER BY TotalDue DESC;
  ````
