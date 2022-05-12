@@ -194,7 +194,20 @@ FROM lojabicicletas.salesorderdetail
 GROUP BY SalesOrderID
 HAVING COUNT(*)>=3)a;
  ```
- 
+ #### Resultado
+<html>
+<body>
+ <table>
+<tr>
+<td bgcolor=silver class='medium'>Total</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>12757</td>
+</tr>
+ </table>
+ </body>
+ </html>
+
  2. Escreva uma query que ligue as tabelas Sales.SalesOrderDetail, Sales.SpecialOfferProduct e Production.Product e retorne os 3 produtos (Name) mais vendidos (pela soma de OrderQty), agrupados pelo número de dias para manufatura (DaysToManufacture).
 ```mysql
 SELECT product.Name, SUM(OrderQty), DaysToManufacture
@@ -205,7 +218,36 @@ AND lojabicicletas.specialofferproduct.ProductID=lojabicicletas.salesorderdetail
 GROUP BY DaysToManufacture,product.Name
 ORDER BY SUM(OrderQty) DESC
 LIMIT 3;
-````
+```
+#### Resultado
+<html>
+<body>
+<table border=1>
+<tr>
+<td bgcolor=silver class='medium'>Name</td>
+<td bgcolor=silver class='medium'>SUM(OrderQty)</td>
+<td bgcolor=silver class='medium'>DaysToManufacture</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>AWC Logo Cap</td>
+<td class='normal' valign='top'>8311</td>
+<td class='normal' valign='top'>0</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Water Bottle - 30 oz.</td>
+<td class='normal' valign='top'>6815</td>
+<td class='normal' valign='top'>0</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Sport-100 Helmet, Blue</td>
+<td class='normal' valign='top'>6743</td>
+<td class='normal' valign='top'>0</td>
+</tr>
+</table>
+</body></html>
 
 3. Escreva uma query ligando as tabelas Person.Person, Sales.Customer e Sales.SalesOrderHeader de forma a obter uma lista de nomes de clientes e uma contagem de pedidos efetuados.
  ```mysql
@@ -215,6 +257,69 @@ LIMIT 3;
  AND lojabicicletas.customer.CustomerID=lojabicicletas.salesorderheader.CustomerID
  GROUP BY FistName, MiddleName, LastName;
  ```
+ #### Resultado (10 linhas)
+ <html>
+<head>
+</head>
+<body>
+<table border=1>
+<tr>
+<td bgcolor=silver class='medium'>Name</td>
+<td bgcolor=silver class='medium'>COUNT(SalesOrderID)</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>James Hendergart</td>
+<td class='normal' valign='top'>12</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Takiko Collins</td>
+<td class='normal' valign='top'>6</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Jauna Elson</td>
+<td class='normal' valign='top'>12</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Robin McGuigan</td>
+<td class='normal' valign='top'>12</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Jimmy Bischoff</td>
+<td class='normal' valign='top'>8</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Sandeep Katyal</td>
+<td class='normal' valign='top'>4</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Richard Bready</td>
+<td class='normal' valign='top'>12</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Abraham Swearengin</td>
+<td class='normal' valign='top'>4</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Scott MacDonald</td>
+<td class='normal' valign='top'>5</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>Ryan Calafato</td>
+<td class='normal' valign='top'>12</td>
+</tr>
+</table>
+</body></html>
+
  4. Escreva uma query usando as tabelas Sales.SalesOrderHeader, Sales.SalesOrderDetail e Production.Product, de forma a obter a soma total de produtos (OrderQty) por ProductID e OrderDate.
  ```mysql
   SELECT SUM(OrderQty),Name, Product.ProductID, OrderDate
@@ -224,6 +329,91 @@ LIMIT 3;
  GROUP BY  ProductID, OrderDate
  ORDER BY SUM(OrderQty) DESC;
  ```
+ #### Resultado (10 linhas)
+ <html>
+<head>
+</head>
+<body>
+<table border=1>
+<tr>
+<td bgcolor=silver class='medium'>SUM(OrderQty)</td>
+<td bgcolor=silver class='medium'>Name</td>
+<td bgcolor=silver class='medium'>ProductID</td>
+<td bgcolor=silver class='medium'>OrderDate</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>498</td>
+<td class='normal' valign='top'>Classic Vest, S</td>
+<td class='normal' valign='top'>864</td>
+<td class='normal' valign='top'>2013-06-30 00:00:00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>465</td>
+<td class='normal' valign='top'>Classic Vest, S</td>
+<td class='normal' valign='top'>864</td>
+<td class='normal' valign='top'>2013-07-31 00:00:00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>444</td>
+<td class='normal' valign='top'>Short-Sleeve Classic Jersey, XL</td>
+<td class='normal' valign='top'>884</td>
+<td class='normal' valign='top'>2013-06-30 00:00:00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>427</td>
+<td class='normal' valign='top'>Women's Mountain Shorts, S</td>
+<td class='normal' valign='top'>867</td>
+<td class='normal' valign='top'>2013-06-30 00:00:00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>424</td>
+<td class='normal' valign='top'>Classic Vest, S</td>
+<td class='normal' valign='top'>864</td>
+<td class='normal' valign='top'>2014-03-31 00:00:00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>420</td>
+<td class='normal' valign='top'>Short-Sleeve Classic Jersey, XL</td>
+<td class='normal' valign='top'>884</td>
+<td class='normal' valign='top'>2013-07-31 00:00:00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>415</td>
+<td class='normal' valign='top'>AWC Logo Cap</td>
+<td class='normal' valign='top'>712</td>
+<td class='normal' valign='top'>2013-06-30 00:00:00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>409</td>
+<td class='normal' valign='top'>Full-Finger Gloves, L</td>
+<td class='normal' valign='top'>863</td>
+<td class='normal' valign='top'>2012-06-30 00:00:00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>406</td>
+<td class='normal' valign='top'>Long-Sleeve Logo Jersey, L</td>
+<td class='normal' valign='top'>715</td>
+<td class='normal' valign='top'>2013-06-30 00:00:00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>397</td>
+<td class='normal' valign='top'>Hitch Rack - 4-Bike</td>
+<td class='normal' valign='top'>876</td>
+<td class='normal' valign='top'>2013-07-31 00:00:00</td>
+</tr>
+</table>
+</body></html>
+
  5. Escreva uma query mostrando os campos SalesOrderID, OrderDate e TotalDue da tabela Sales.SalesOrderHeader. Obtenha apenas as linhas onde a ordem tenha sido feita durante o mês de setembro/2011 e o total devido esteja acima de 1.000. Ordene pelo total devido decrescente.
  ```mysql
  SELECT SalesOrderID, OrderDate, TotalDue
@@ -232,3 +422,77 @@ LIMIT 3;
  AND TotalDue>1000
  ORDER BY TotalDue DESC;
  ````
+#### Resultado (10 linhas)
+<html>
+<head>
+
+</head>
+<body>
+<table border=1>
+<tr>
+<td bgcolor=silver class='medium'>SalesOrderID</td>
+<td bgcolor=silver class='medium'>OrderDate</td>
+<td bgcolor=silver class='medium'>TotalDue</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>44324</td>
+<td class='normal' valign='top'>2011-09-01 00:00:00</td>
+<td class='normal' valign='top'>39539884.00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>44326</td>
+<td class='normal' valign='top'>2011-09-01 00:00:00</td>
+<td class='normal' valign='top'>39539884.00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>44327</td>
+<td class='normal' valign='top'>2011-09-02 00:00:00</td>
+<td class='normal' valign='top'>39539884.00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>44328</td>
+<td class='normal' valign='top'>2011-09-02 00:00:00</td>
+<td class='normal' valign='top'>39539884.00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>44329</td>
+<td class='normal' valign='top'>2011-09-02 00:00:00</td>
+<td class='normal' valign='top'>39539884.00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>44330</td>
+<td class='normal' valign='top'>2011-09-02 00:00:00</td>
+<td class='normal' valign='top'>39539884.00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>44331</td>
+<td class='normal' valign='top'>2011-09-03 00:00:00</td>
+<td class='normal' valign='top'>39539884.00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>44332</td>
+<td class='normal' valign='top'>2011-09-03 00:00:00</td>
+<td class='normal' valign='top'>39539884.00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>44338</td>
+<td class='normal' valign='top'>2011-09-04 00:00:00</td>
+<td class='normal' valign='top'>39539884.00</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>44334</td>
+<td class='normal' valign='top'>2011-09-04 00:00:00</td>
+<td class='normal' valign='top'>39539884.00</td>
+</tr>
+</table>
+</body></html>
