@@ -185,7 +185,7 @@ ENGINE = InnoDB;
  
  ![Sincronização Diretório Local Azure](/img/pipelineAzure.JPG)
  
- #### Análise de dados
+ ## Análise de dados
  1. Escreva uma query que retorna a quantidade de linhas na tabela Sales.SalesOrderDetail pelo campo SalesOrderID, desde que tenham pelo menos três linhas de detalhes.
  ```mysql
 SELECT COUNT(*) as Total FROM(
