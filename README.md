@@ -28,7 +28,6 @@ A partir de um conjunto de arquivos referentes aos dados de um empresa que produ
 * Azure Storage
 * Azure MySQL 8.0
 * DataFactory
-* BigQuery
 
 ## Desenvolvimento
 
